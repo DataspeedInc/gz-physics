@@ -893,6 +893,7 @@ Identity SDFFeatures::ConstructSdfModelImpl(
   model->body->SetBaseWorldTransform(convertTf(worldToRootCom));
   model->body->setBaseVel(btVector3(0, 0, 0));
   model->body->setBaseOmega(btVector3(0, 0, 0));
+  model->body->setMaxCoordinateVelocity(1000.0);
 
   {
     const auto *link = structure.rootLink;

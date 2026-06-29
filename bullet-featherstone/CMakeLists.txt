@@ -5,7 +5,13 @@ gz_add_component(bullet-featherstone INTERFACE
   GET_TARGET_NAME features)
 
 link_directories(${BULLET_LIBRARY_DIRS})
-target_link_libraries(${features} INTERFACE GzBullet::GzBullet)
+target_include_directories(${features} INTERFACE ${BULLET_INCLUDE_DIRS})
+target_compile_definitions(${features} INTERFACE BT_USE_DOUBLE_PRECISION)
+target_link_libraries(${features} INTERFACE
+  BulletDynamics-float64
+  BulletCollision-float64
+  BulletSoftBody-float64
+  LinearMath-float64)
 
 gz_get_libsources_and_unittests(sources test_sources)
 
